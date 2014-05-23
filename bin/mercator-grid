@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+var getopt = require('node-getopt').create([
+  ['i' , 'input=ARG'			   , 'input projection'],
+  ['o' , 'output=ARG'			   , 'output projection'],
+  ['' , 'output-units=ARG'		   , 'output projection units'],
+  ['', 'input-units=ARG'		   , 'input projection units'],
+  ['h' , 'help'                , 'display this help'],
+  ['v' , 'version'             , 'show version']
+]).bindHelp();     // bind option 'help' to default action
+
+getopt.setHelp(
+	"Usage: mercator-grid x[lng] y[lat] [OPTIONS]\n" +
+	"[[OPTIONS]]\n"
+)
+var opt = getopt.parseSystem(); // parse command line
+var cellSize = 1;
+
+
+
+
+
+var coords = {x : parseInt(opt.argv[0]), y: parseInt(opt.argv[1])};
+
+
+
+var MP = require('../');
+if (typeof opt.options.version != 'unbdefined') {
+	console.log(MP.version);
+	process.exit(0);
+}
+var Grid = new MP.MercatorGrid();
+if (opt.argv.length < 2) {
+	getopt.showHelp();
+	process.exit(-1);
+}
+var input = 'decart';
+var output = 'mercator';
+if (typeof opt.input != 'undefined') {
+	input = opt.input;
+}
+if (typeof opt.output != 'undefined') {
+	output = opt.output;
+}
+
+switch(input) {
+	case 'decart':
+		console.log(Grid.gridPositionToLatLng(coords.x, coords.y));
+		break;
+	case 'mercator':
+		console.log(Grid.coordsToGridPosition(coords.x, coords.y));
+		break;
+}
+
+
+
+
+
+
