@@ -1,6 +1,6 @@
-var MercatorGrid = function(options) {
+function MercatorGrid(options) {
     var self = this;
-    self.cellSize = options.cellSize || 1;
+	self.cellSize = 1;
 }
 
 MercatorGrid.prototype.coordsPolynome = function(x) {
@@ -11,7 +11,7 @@ MercatorGrid.prototype.coordsPolynome = function(x) {
 
 MercatorGrid.prototype.coordsToGridPosition = function(lat, lng, step) {
 	var self = this;
-	step = step || self.latStep;
+	step = step || self.cellSize;
 	var j = 0;
 	var pos = {x : null, y: null};
 	pos.x = Math.round((lng / (step * 2)));
@@ -26,7 +26,7 @@ MercatorGrid.prototype.coordsPolynome = function(x) {
 
 MercatorGrid.prototype.gridPositionToLatLng = function(x, y, step) {
 	var self = this;
-	step = step || self.latStep;
+	step = step || self.cellSize;
 	var latLng = {lat : null, lng: null};
 	var mod = (y == 0) ? 1 : y / Math.abs(y);
 	latLng.lng = x * step * 2;
@@ -37,12 +37,13 @@ MercatorGrid.prototype.gridPositionToLatLng = function(x, y, step) {
 	latLng.lat *= mod;
 	return latLng;
 };
-
-
-
-if (typeof exports == 'function') {
-    exports.MercatorGrid = MercatorGrid;
+if (typeof module != 'undefined') {
+	var pjson = require('./package.json');
+	exports.version = pjson.version;
+	module.exports.MercatorGrid = MercatorGrid;
+	module.exports.version = pjson.version;
 }
+
 
 
 
