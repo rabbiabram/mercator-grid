@@ -3,7 +3,6 @@
   "version" : "0.0.1",
   "description" : "Provide API to create Decart projection grid on Spherical Mercator projection",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
   },
   "keywords": [
     "mercator",
