@@ -1,8 +1,26 @@
 {
+  "name" : "mercator-grid",
+  "version" : "0.0.1",
+  "description" : "Provide API to create Decart projection grid on Spherical Mercator projection",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
-  }
-  "dependencies" {
+  },
+  "keywords": [
+    "mercator",
+    "decart",
+    "grid"
+  ],
+  "dependencies" : {
     
-  }  
+  },
+  "engines": {
+    "node": ">= 0.4.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rabbiabram/mercator-grid.git"
+  },
+  "files" : [
+      "mercator-grid.js"
+    ]
 }
