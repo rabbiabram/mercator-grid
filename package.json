@@ -10,7 +10,7 @@
     "grid"
   ],
   "dependencies" : {
-    
+	"node-getopt" : "0.2"
   },
   "engines": {
     "node": ">= 0.4.x"
@@ -20,6 +20,12 @@
     "url": "git://github.com/rabbiabram/mercator-grid.git"
   },
   "files" : [
-      "mercator-grid.js"
-    ]
+      "mercator-grid.js",
+	  "bin",
+	  "index.js"
+    ],
+  "version" : "v0.0.2",
+  "bin" : {
+		"mercator-grid" : "./bin/mercator-grid"
+  }
 }
