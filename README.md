@@ -7,4 +7,4 @@ Provide API to create Decart projection grid on Spherical Mercator projection
 
 Install
 =============
-npm install mercator-grid
+	npm install mercator-grid
